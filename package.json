@@ -1,0 +1,85 @@
+{
+  "name": "smpcbt",
+  "version": "0.0.1",
+  "author": "Ionic Framework",
+  "homepage": "http://ionicframework.com/",
+  "private": true,
+  "scripts": {
+    "clean": "ionic-app-scripts clean",
+    "build": "ionic-app-scripts build",
+    "lint": "ionic-app-scripts lint",
+    "ionic:build": "ionic-app-scripts build",
+    "ionic:serve": "ionic-app-scripts serve",
+    "electron": "electron .",
+    "rebuild": "electron-rebuild -f -w sqlite3",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "win-pack": "electron-builder --dir --win",
+    "win-dist": "electron-builder --win",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "@angular/animations": "5.2.11",
+    "@angular/common": "5.2.11",
+    "@angular/compiler": "5.2.11",
+    "@angular/compiler-cli": "5.2.11",
+    "@angular/core": "5.2.11",
+    "@angular/forms": "5.2.11",
+    "@angular/http": "5.2.11",
+    "@angular/platform-browser": "5.2.11",
+    "@angular/platform-browser-dynamic": "5.2.11",
+    "@ionic-native/core": "~4.15.0",
+    "ionic-angular": "3.9.2",
+    "ionicons": "4.4.6",
+    "knex": "^0.15.2",
+    "ngx-electron": "^1.0.4",
+    "node-gyp": "^3.8.0",
+    "rxjs": "^5.5.12",
+    "sqlite3": "^4.0.3",
+    "sw-toolbox": "3.6.0",
+    "zone.js": "0.8.26"
+  },
+  "devDependencies": {
+    "@ionic/app-scripts": "^3.2.0",
+    "electron": "^3.0.8",
+    "electron-builder": "^20.13.4",
+    "electron-rebuild": "^1.7.3",
+    "electron-winstaller": "^2.6.4",
+    "typescript": "~2.6.2"
+  },
+  "main": "main.js",
+  "description": "An Ionic project",
+  "build": {
+    "appId": "com.magentamedia.desktopCBT",
+    "files": [
+      "main.js",
+      "server.js",
+      "!db/*",
+      "www/**/*"
+    ],
+    "extraResources": [
+      "db"
+    ],
+    "mac": {
+      "category": "productivity"
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "./build/icon.ico",
+      "publisherName": "Magenta Media"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "deb",
+          "arch": [
+            "ia32",
+            "x64"
+          ]
+        }
+      ],
+      "icon": "./build/icon.ico"
+    },
+    "productName": "CBT UAS + USBN SD 456"
+  }
+}

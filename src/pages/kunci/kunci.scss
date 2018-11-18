@@ -1,0 +1,85 @@
+page-kunci {
+    .tab-tl {
+        font-size: 1.5rem;
+    }
+    .scroll-content {
+        overflow: hidden;
+    }
+    .grid,
+    .row {
+        padding: 0;
+        height: 100%;
+    }
+    .s-cut {
+        max-height: 100%;
+
+        .sc-btn {
+            height: 100%;
+            overflow-y: auto;
+        }
+    }
+    .title-header {
+        min-height: 35px;
+        background-color: #fbff00;
+        text-transform: capitalize;
+        border: 2px dashed #32db64;
+    }
+    .fbold {
+        font-weight: bold;
+    }
+    .square {
+        width: 15px;
+        height: 15px;
+    }
+    .black {
+        background: #000000;
+    }
+    .red {
+        background: #ff0000;
+    }
+    .blue {
+        background: #0000ff;
+    }
+    .img-div {
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+    }
+    .z-div {
+        height: 95%;
+        width: 100%;
+    }
+    .to-top {
+        top: 0;
+    }
+    .to-left {
+        left: 0;
+    }
+    .numpos {
+        width: 50px;
+        height: 100%;
+        background-color: #0000ff;
+        color: #fff;
+        font-weight: bold;
+        padding: 5px;
+    }
+
+    .rectangle {
+        min-width: 50px;
+        height: 45px;
+        display: flex;
+        font-size: 30px;
+    }
+    .s-cut {
+        .to-right {
+            right: 15px;
+        }
+    }
+    .box {
+        min-width: 50px;
+        height: 100%;
+        color: #fff;
+        padding: 5px;
+        text-transform: capitalize;
+    }
+}

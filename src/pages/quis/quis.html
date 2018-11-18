@@ -1,0 +1,123 @@
+<!--
+  Generated template for the QuisPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<!-- sidemenu -->
+
+<!-- ////// -->
+
+<!-- <ion-header>
+  <ion-navbar hideBackButton>
+    <ion-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <h5>No. {{pos+1}}</h5>
+          </ion-col>
+          <ion-col col-6 text-right>
+            <h5 *ngIf="timeInSeconds && timeInSeconds > 0">{{displayTime}}</h5>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content text-center>
+  <div class="container">
+    <div class="mini-panel">
+      <h3>{{pos+1}}</h3>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-10 no-padding class="s-cut">
+          <div class="z-wrapper">
+            <div #zoom class="div-soal" text-left (click)="r_click($event)">
+              <img [src]="question" />
+            </div>
+          </div>
+
+          <div padding class="posAbs to-top to-right">
+            <div>
+              <ion-range min="10" max="20" color="secondary" step="1" [(ngModel)]="scales" (ionChange)="fZoom()">
+                <ion-label range-left>
+                  <ion-icon name="remove"></ion-icon>
+                </ion-label>
+                <ion-label range-right>
+                  <ion-icon name="add"></ion-icon>
+                </ion-label>
+              </ion-range>
+            </div>
+          </div>
+
+          <div id="helper-div" class="posAbs to-botom to-center">
+            <button no-margin ion-button color="warning" (click)="ragu(pos)">ragu</button>
+            <button no-margin ion-button color="primary" (click)="finishAlt()">selesai</button>
+          </div>
+
+          <div class="posAbs to-top-center to-left">
+            <button outline no-margin ion-button color="secondary" [style.display]="(pos < 1) ? 'none' : 'block'" (click)="prevq(pos)">
+              <ion-icon name="arrow-back"></ion-icon>
+            </button>
+          </div>
+
+          <div class="posAbs to-top-center to-right">
+            <button no-margin outline ion-button color="secondary" [style.display]="(pos == (limitedVal-1)) ? 'none' : 'block'" (click)="nextq(pos)">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </div>
+
+          <div class="div-choice">
+            <div class="center-full">
+              <form [formGroup]="cbForm">
+                <div radio-group class="segmented-button" formControlName="listRadio" (ionChange)="jawab(pos,$event)">
+                  <label class="wrap-radio">
+                    <ion-radio value="a"></ion-radio>
+                    <span>A</span>
+                  </label>
+                  <label class="wrap-radio">
+                    <ion-radio value="b"></ion-radio>
+                    <span>B</span>
+                  </label>
+                  <label class="wrap-radio">
+                    <ion-radio value="c"></ion-radio>
+                    <span>C</span>
+                  </label>
+                  <label class="wrap-radio">
+                    <ion-radio value="d"></ion-radio>
+                    <span>D</span>
+                  </label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </ion-col>
+
+        <ion-col col-2 class="s-cut" no-padding>
+          <div class="timing">
+            <span no-margin *ngIf="timeInSeconds && timeInSeconds > 0">{{displayTime}}</span>
+          </div>
+
+          <div class="sc-btn">
+            <ion-list no-lines no-margin>
+              <div *ngFor="let ig of ' '.repeat(limitedVal).split(''), let x = index">
+                <button ion-item [color]="(x===pos)?'light':'dark'" id="sc{{x}}" class="flats" (click)="jump(x)">
+                  <span>{{x+1}}. </span>
+                  <span class="to-right" text-uppercase id="an-{{x}}" style="color:#2ec95c"></span>
+                </button>
+              </div>
+            </ion-list>
+          </div>
+
+          <div class="dev-footer">
+            <img src="assets/imgs/logo-baru.png" class="img-responsive" />
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

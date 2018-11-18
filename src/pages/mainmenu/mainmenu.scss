@@ -1,0 +1,83 @@
+page-mainmenu {
+    .item {
+        color: #ffffff;
+        margin-bottom: 10px;
+        background-color: #2ec95c;
+        border-radius: 10px;
+        font-size: 2rem;
+        font-weight: bolder;
+    }
+    .title {
+        color: #ffffff;
+        font-size: 4rem;
+        text-align: center;
+        padding: 15px;
+    }
+    .title:after {
+        display: inline-block;
+        margin: 0 0 8px 20px;
+        height: 3px;
+        content: " ";
+        text-shadow: none;
+        background-color: #fff;
+        width: 140px;
+    }
+    .title:before {
+        display: inline-block;
+        margin: 0 20px 8px 0;
+        height: 3px;
+        content: " ";
+        text-shadow: none;
+        background-color: #fff;
+        width: 140px;
+    }
+    .button {
+        box-shadow: none;
+        border: none;
+    }
+    .button-md {
+        background: #81d8d0;
+    }
+    .button-md:hover {
+        background: rgba($color: #488aff, $alpha: 0.7);
+    }
+    .item-pb .item {
+        color: #ffffff;
+        background-color: #FF00FF;
+    }
+    #mapel-menu {
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+    #mapel-menu .grid {
+        height: 35%;
+    }
+    #mapel-menu .row {
+        height: 100%;
+    }
+    
+    .full-button img {
+        max-width: 100%;
+        max-height: 70%;
+    }
+    .button-inner {
+        display: inherit;
+        padding: 10px 0;
+    }
+    .btn-txt {
+        font-style: italic;
+    }
+    #paketan {
+        height: 250px;
+        margin-top: 10%;
+        .grid,
+        .row,
+        .button {
+            height: 100%;
+        }
+        .button span {
+            font-size: 4em;
+        }
+    }
+}
