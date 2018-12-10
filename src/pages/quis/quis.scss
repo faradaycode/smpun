@@ -2,100 +2,56 @@ page-quis {
     ion-content {
         background: #ffffff;
     }
+
     ion-range {
         position: absolute;
-        top: 0;
         right: 10px;
         width: 200px;
     }
+
+    ion-footer {
+        .button-md {
+            min-width: 85px;
+        }
+    }
+
+    .z-wrapper {
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+    }
+
+    .timer-text {
+        color: #fff;
+    }
+
     .button-md {
         box-shadow: none;
+        margin: 0;
     }
-    .container {
-        width: 100%;
-        height: 100%;
-    }
-    .grid-con {
-        width: 100%;
-        height: 85%;
-    }
+
     .div-soal {
         position: relative;
         width: 100%;
-        height: 95%;
-        .button {
-            box-shadow: none !important;
-            border: none;
-        }
-    }
-
-    #helper-div {
-        padding: 16px;
-        bottom: 5%;
+        height: 100%;
+        padding: 4px;
     }
 
     .div-choice {
-        z-index: 2;
-        width: 100%;
-        min-height: 5vh;
+        width: fit-content;
+        height: fit-content;
         position: absolute;
-        bottom: 0;
-        background-color: #f4f4f4;
-        border-top: 3px solid #00cbcb;
-        .button-md {
-            height: 2.5rem;
-        }
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
     }
-    .grid,
-    .row {
-        padding: 0;
-        height: 100%;
-    }
-    .segmented-button input[type="radio"] {
-        width: 0;
-        height: 0;
-        display: none;
-    }
+
     .div-soal img {
         max-width: 100%;
         max-height: 100%;
-        margin-left: 50px;
     }
-    .left-full {
-        position: absolute;
-        left: 0;
-        height: 100%;
-        .button {
-            height: 100%;
-            width: 85px;
-            box-shadow: none;
-            border: none;
-        }
-        ion-icon {
-            font-size: 4em;
-        }
-    }
-    .right-full {
-        position: absolute;
-        right: 0;
-        height: 100%;
-        .button {
-            height: 100%;
-            width: 85px;
-            box-shadow: none;
-            border: none;
-        }
-        ion-icon {
-            font-size: 4em;
-        }
-    }
-    .center-full {
-        padding: 5px;
-        .button {
-            box-shadow: none !important;
-            border: none;
-        }
-    }
+
     // segmented style radio button
     .segmented-button label {
         display: -moz-inline-box;
@@ -104,71 +60,80 @@ page-quis {
         position: relative;
         margin: 0 5px;
     }
+
     .segmented-button .wrap-radio span {
         position: absolute;
         font-size: 15px;
         font-weight: bold;
-        color: #000000;
-        top: 8px;
-        left: 20px;
+        color: #FFF;
+        top: 12px;
+        left: 13px;
     }
+
+    .radio-md {
+        margin: 2px 0;
+    }
+
+    .radio-md .radio-icon {
+        width: 37px;
+        height: 37px;
+        border-color: #fff;
+    }
+
+    .radio-md .radio-checked {
+        border-color: #fecc0c;
+    }
+
+    .radio-md .radio-inner {
+        background-color: #fecc0c;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: auto;
+        margin-right: auto;
+        width: 29px;
+        height: 29px;
+    }
+
     .selected span {
         color: #ffffff;
     }
+
     .no-soal {
         padding: 10px;
         position: absolute;
         top: 33px;
         left: 2px;
     }
+
     .no-soal span {
         font-weight: bold;
         font-size: 14px;
     }
-    .radio-md .radio-icon {
-        width: 50px;
-        height: 35px;
-    }
-    .radio-md .radio-inner {
-        width: 42px;
-        height: 27px;
-    }
+
     .scroll-content {
         overflow: hidden;
     }
+
     .paneling {
         height: auto;
     }
+
     .mini-panel {
-        width: 50px;
-        height: 50px;
-        position: fixed;
-        top: 0;
+        width: 35px;
+        height: 100%;
+        position: absolute;
         background: #2e2e2e;
         color: #fff;
-    }
-    .s-cut {
-        max-height: 100%;
-        .timing {
-            height: 15%;
-            background-color: teal;
-            color: #fff;
-            padding: 45px 0;
-            font-size: 4rem;
-        }
-        .sc-btn {
-            height: 80%;
-            overflow-y: scroll;
-        }
-        .dev-footer {
-            height: 5%;
-            padding: 8px;
-            background-color: #f4f4f4;
-        }
-        .z-wrapper {
-            height: 100%;
-            width: 100%;
-            overflow: auto;
+        z-index: 100;
+
+        span {
+            position: absolute;
+            width: fit-content;
+            height: fit-content;
         }
     }
 
@@ -178,5 +143,126 @@ page-quis {
         width: 50px;
         font-size: 2.2rem;
         border-radius: 100%;
+    }
+
+    .toolbar-up {
+        min-height: 28px;
+        padding: 0 10px;
+    }
+
+    .toolbar-background-md {
+        border-color: #ffffff;
+        background: #308cc9;
+        color: #fff;
+    }
+
+    .toolbar-content-md {
+        position: relative;
+    }
+
+    .half-circle-btn {
+        height: 35px * 2;
+        width: 35px;
+        border-bottom-left-radius: 35px * 2;
+        border-top-left-radius: 35px * 2;
+        background-color: $smp-color;
+        color: #fff;
+        transition: right 0.2s ease-out;
+    }
+
+    .half-circle-btn.to-right {
+        right: 0;
+    }
+
+    .center-vertical {
+        top: 0;
+        bottom: 0;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    .center-horizontal {
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .collapse-sidemenu {
+        // width: 85px;
+        width: 0;
+        height: 450px;
+        overflow-y: auto;
+        transition: width 0.2s ease-out;
+    }
+
+    .sc-btn {
+        height: 100%;
+    }
+
+    .collapse-sidemenu.to-right {
+        right: 0;
+    }
+
+    .left-helper {
+        position: absolute;
+        width: fit-content;
+        height: 100%;
+        left: 0;
+
+        button {
+            height: 100%;
+        }
+    }
+
+    .center-helper {
+        width: fit-content;
+        height: 100%;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+
+        button {
+            height: 100%;
+        }
+    }
+
+    .right-helper {
+        position: absolute;
+        width: fit-content;
+        height: 100%;
+        right: 0;
+
+        button {
+            height: 100%;
+        }
+    }
+
+    .zoomer {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #2e2e2e;
+        color: #FFF;
+    }
+
+    #foot-up {
+        width: 100%;
+        height: 30px;
+        background-color: $smp-color;
+    }
+
+    #foot-down {
+        width: 100%;
+        height: 40px;
+        background-color: $smp-color-darker;
+    }
+
+    .ragu-color {
+        background-color: #FFA500 !important;
     }
 }

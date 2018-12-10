@@ -1,7 +1,7 @@
+import { MethodeProvider } from './../../providers/methode/methode';
 import { IpcprovProvider } from './../../providers/ipcprov/ipcprov';
 import { NavController, IonicPage, ModalController } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { trigger, style, transition, animate, keyframes, query, stagger, state } from '@angular/animations';
 
 @IonicPage()
 @Component({
@@ -11,7 +11,8 @@ import { trigger, style, transition, animate, keyframes, query, stagger, state }
 
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private modalCtrl: ModalController, private ipcp: IpcprovProvider) {
+  constructor(public navCtrl: NavController, private modalCtrl: ModalController, 
+    private ipcp: IpcprovProvider, private me: MethodeProvider) {
 
   }
 
@@ -20,11 +21,18 @@ export class HomePage {
   }
 
   ngOnInit() {
-    
+    this.accordionic("box-menu");
   }
 
-  goTo(mapel) {
-    this.navCtrl.push("MainmenuPage", { mapel: mapel });
+  goTo(mapel, kelas, paket = null) {
+    this.navCtrl.push("QuisPage", { 
+      mapel: mapel,
+      kelas: kelas
+    });
+  }
+
+  nextPage(pagename) {
+    this.navCtrl.push(pagename);
   }
 
   openModal() {
@@ -35,8 +43,8 @@ export class HomePage {
     this.ipcp.send("exitApp");
   }
 
-  private accordionic() {
-    let accordion = document.getElementsByClassName("full-block");
+  private accordionic(css_classname) {
+    let accordion = document.getElementsByClassName(css_classname);
     let i;
 
     for (i = 0; i < accordion.length; i++) {
@@ -52,6 +60,17 @@ export class HomePage {
         console.log(panels);
       });
     }
+  }
+
+  private openDialog() {
+    let modal = this.modalCtrl.create("ModalstartPage", null, {
+      cssClass: "info-modal"
+    });
+    modal.present();
+  }
+
+  private openFacebook() {
+    this.ipcp.send("openFB");
   }
 
 }

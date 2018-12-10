@@ -26,6 +26,10 @@ export class KunciPage {
   soals: any = [];
   bahass: any = [];
 
+  //
+  start = 0;
+  fin = 40;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private serv: MethodeProvider,
     private modalCtrl: ModalController, private viewCtrl: ViewController) {
     this.kl = this.navParams.get('klas');
@@ -42,7 +46,7 @@ export class KunciPage {
     }
   }
 
-  jump(val, position) {
+  jump(val = null, position) {
     let url;
     let url2;
 

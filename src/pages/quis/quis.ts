@@ -1,3 +1,4 @@
+import { query, style, transition, animate, trigger, state, group } from '@angular/animations';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, AlertController, Content } from 'ionic-angular';
 import { MethodeProvider } from '../../providers/methode/methode';
@@ -15,6 +16,40 @@ import { IpcprovProvider } from '../../providers/ipcprov/ipcprov';
 @Component({
   selector: 'page-quis',
   templateUrl: 'quis.html',
+  animations: [
+    trigger('slideInOut', [
+      state('in', style({
+        'transform': 'translate3d(0, 0, 0)', 'opacity': '1', 'visibility': 'visible'
+      })),
+      state('out', style({
+        'transform': 'translate3d(0, 100%, 0)', 'opacity': '0', 'visibility': 'hidden'
+      })),
+      transition('in => out', [group([
+        animate('400ms ease-in-out', style({
+          'opacity': '0'
+        })),
+        animate('600ms ease-in-out', style({
+          'transform': 'translate3d(0, 100%, 0)'
+        })),
+        animate('700ms ease-in-out', style({
+          'visibility': 'hidden'
+        }))
+      ]
+      )]),
+      transition('out => in', [group([
+        animate('1ms ease-in-out', style({
+          'visibility': 'visible'
+        })),
+        animate('400ms ease-in-out', style({
+          'transform': 'translate3d(0, 0, 0)'
+        })),
+        animate('600ms ease-in-out', style({
+          'opacity': '1'
+        }))
+      ]
+      )])
+    ])
+  ]
 })
 
 export class QuisPage {
@@ -51,6 +86,9 @@ export class QuisPage {
   scales: number = 1;
   babs: any = [];
 
+  //anim
+  sliding;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private serv: MethodeProvider,
     private form: FormBuilder, private menuctrl: MenuController, private alertCtrl: AlertController,
     private ipcp: IpcprovProvider) {
@@ -63,6 +101,7 @@ export class QuisPage {
   // }
 
   ngOnInit() {
+    this.sliding = "out";
     let _ = this;
     this.cbForm = this.form.group({
       listRadio: ['']
@@ -174,16 +213,16 @@ export class QuisPage {
     this.pos++;
     this.limiter++;
     this.answered(this.pos);
+    this.orangeHeader(this.pos);
     this.showQuestion();
-    this._ragu = (this._ragu) ? !this._ragu : this._ragu;
     this.unZoom();
   }
   prevq(val) {
     this.pos--;
     this.limiter--;
     this.answered(this.pos);
+    this.orangeHeader(this.pos);
     this.showQuestion();
-    this._ragu = (this._ragu) ? !this._ragu : this._ragu;
     this.unZoom();
   }
   //end method
@@ -377,11 +416,11 @@ export class QuisPage {
 
     let alert = this.alertCtrl.create({
       title: "Hi...",
-      message: "<div class='alertext'><p>Untuk melihat hasil analisis dari soal yang kamu kerjakan, bisa dilihat di halaman nilaiku, caranya:</p>"+
-      "<ol>"+
-      "<li>klik tombol <strong>nilaiku</strong> yang ada di halaman Pilih Mata Pelajaran</li>"+
-      "<li>klik&nbsp;<strong>review</strong> yang ada di bawah nilai tiap mata pelajaran.</li>"+
-      "</ol></div>",
+      message: "<div class='alertext'><p>Untuk melihat hasil analisis dari soal yang kamu kerjakan, bisa dilihat di halaman nilaiku, caranya:</p>" +
+        "<ol>" +
+        "<li>klik tombol <strong>nilaiku</strong> yang ada di halaman Pilih Mata Pelajaran</li>" +
+        "<li>klik&nbsp;<strong>review</strong> yang ada di bawah nilai tiap mata pelajaran.</li>" +
+        "</ol></div>",
       buttons: [
         {
           text: 'Yes',
@@ -439,39 +478,45 @@ export class QuisPage {
   }
   onGo() {
     this.serv.setGo().subscribe(res => {
-      if (res === null) {
-        console.log(".....");
-      } else {
+      if (res !== null) { 
         this.pos = res;
         this.limiter = res;
         this.answered(this.pos);
         this.showQuestion();
-        this._ragu = (this._ragu) ? !this._ragu : this._ragu;
       }
-    })
+    });
   }
   ragu(numQst) {
     var bt = document.getElementById("sc" + numQst);
+    let tob = document.getElementsByClassName("toolbar-background-md");
 
-    if (!this._ragu) {
-      if (bt.style.backgroundColor === "orange") {
-        bt.style.backgroundColor = "";
-        this.count--;
-      } else {
-        this._ragu = !this._ragu;
-        bt.style.backgroundColor = "orange";
-        this.count++;
-      }
-    } else {
-      this._ragu = !this._ragu;
-      bt.style.backgroundColor = "";
+    if (bt.classList.contains("ragu-color")) {
+      bt.classList.remove("ragu-color");
+      tob.item(1).classList.remove("ragu-color");
       this.count--;
+    } else {
+      bt.classList.add("ragu-color");
+      tob.item(1).classList.add("ragu-color");
+      this.count++;
     }
+
+  }
+
+  orangeHeader(numQst) {
+    var bt = document.getElementById("sc" + numQst);
+    let tob = document.getElementsByClassName("toolbar-background-md");
+
+    if (bt.classList.contains("ragu-color")) {
+      tob.item(1).classList.add("ragu-color");
+    } else {
+      tob.item(1).classList.remove("ragu-color");
+    }
+
   }
   jump(val) {
     this.serv.getGo(val);
+    this.orangeHeader(val);
     this.unZoom();
-    this.menuctrl.close();
   }
 
   unZoom() {
@@ -484,7 +529,29 @@ export class QuisPage {
     this.serv.clicknZoom(scala, this.zoom.nativeElement, this.content);
 
   }
+
   r_click(evt) {
     this.serv.clicknZoom(evt, this.zoom.nativeElement, this.content);
+  }
+
+  sidemenuOpen() {
+    let sidemenu = document.getElementById("sc_sidemenu");
+    let btnside = document.getElementById("btn_sidemenu");
+
+    if (sidemenu.offsetWidth == 0) {
+      sidemenu.style.width = 85 + "px";
+      btnside.style.right = 85 + "px";
+    } else {
+      sidemenu.style.width = 0 + "px";
+      btnside.style.right = 0 + "px";
+    }
+  }
+
+  zoomOpen() {
+    if (this.sliding !== 'in') {
+      this.sliding = 'in';
+    } else {
+      this.sliding = 'out';
+    }
   }
 }

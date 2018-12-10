@@ -1,159 +1,161 @@
 <ion-content class="no-scroll">
-  <div class="container">
-    <ion-grid class="minHeight-100">
+
+  <section id="home_header">
+    <div class="logo-image">
+      <img src="assets/imgs/screen.svg" class="img-responsive" />
+    </div>
+
+    <!-- <div id="sosmed-btn">
+      <button ion-button clear no-margin>
+        <ion-icon name="logo-facebook"></ion-icon>
+      </button>
+
+      <button ion-button color="warning" clear no-margin>
+        <ion-icon name="logo-instagram"></ion-icon>
+      </button>
+    </div> -->
+
+    <button ion-button color="danger" class="posAbs to-right to-top" no-margin (click)="exitApp()">
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </section>
+
+  <section id="home_container" margin-top>
+    <div class="container">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div class="box-menu grayed-white">
+              <ion-img height="64" width="64" src="assets/imgs/function.svg"></ion-img>
+              <h5>matematika</h5>
+            </div>
+
+            <div class="dropdown-container whitef4">
+              <div class="paket-menu" (click)="openDialog()">
+                <span>paket I</span>
+              </div>
+              <div class="paket-menu" (click)="openFacebook()">
+                <span>paket II</span>
+              </div>
+              <div class="paket-menu" (click)="goTo('mtk','4')">
+                <span>paket III</span>
+              </div>
+              <div class="paket-menu" (click)="nextPage('HasilPage')">
+                <span>paket IV</span>
+              </div>
+              <div class="paket-menu">
+                <span>paket V</span>
+              </div>
+            </div>
+          </ion-col>
+
+          <ion-col>
+            <div class="box-menu grayed-white">
+              <ion-img height="64" width="64" src="assets/imgs/indonesia.svg"></ion-img>
+              <h5>bahasa indonesia</h5>
+            </div>
+
+            <div class="dropdown-container whitef4">
+              <div class="paket-menu">
+                <span>paket I</span>
+              </div>
+              <div class="paket-menu">
+                <span>paket II</span>
+              </div>
+              <div class="paket-menu">
+                <span>paket III</span>
+              </div>
+              <div class="paket-menu">
+                <span>paket IV</span>
+              </div>
+              <div class="paket-menu">
+                <span>paket V</span>
+              </div>
+            </div>
+          </ion-col>
+
+          <ion-col>
+            <div class="box-menu grayed-white">
+              <ion-img height="64" width="64" src="assets/imgs/science.svg"></ion-img>
+              <h5>ipa</h5>
+            </div>
+
+            <div class="dropdown-container whitef4">
+              <div class="paket-menu">
+                <span>paket I</span>
+              </div>
+              <div class="paket-menu">
+                <span>paket II</span>
+              </div>
+              <div class="paket-menu">
+                <span>paket III</span>
+              </div>
+              <div class="paket-menu">
+                <span>paket IV</span>
+              </div>
+              <div class="paket-menu">
+                <span>paket V</span>
+              </div>
+            </div>
+          </ion-col>
+
+          <ion-col>
+            <div class="box-menu grayed-white">
+              <ion-img height="64" width="64" src="assets/imgs/united-kingdom.svg"></ion-img>
+              <h5>bahasa inggris</h5>
+            </div>
+
+            <div class="dropdown-container whitef4">
+              <div class="paket-menu">
+                <span>paket I</span>
+              </div>
+              <div class="paket-menu">
+                <span>paket II</span>
+              </div>
+              <div class="paket-menu">
+                <span>paket III</span>
+              </div>
+              <div class="paket-menu">
+                <span>paket IV</span>
+              </div>
+              <div class="paket-menu">
+                <span>paket V</span>
+              </div>
+            </div>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+  </section>
+
+  <section id="button-section">
+    <ion-grid>
       <ion-row>
-        <ion-col col-4>
-          <div class="logo-apps">
-            <img src="assets/imgs/screen.svg" class="img-responsive" />
-          </div>
-          <ion-grid class="no-padd">
-            <ion-row>
-              <ion-col>
-                <button ion-button color="yellowise" class="full-block">
-                  <div class="inner-container">
-                    <img src="assets/imgs/pi.svg" class="img-responsive" (click)="goTo('mtk')" />
-                    <span>matematika</span>
-                  </div>
-                </button>
-              </ion-col>
-              <ion-col>
-                <button ion-button color="yellowise" class="full-block">
-                  <div class="inner-container">
-                    <img src="assets/imgs/science.svg" class="img-responsive" />
-                    <span>matematika</span>
-                  </div>
-                </button>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <button ion-button color="yellowise" class="full-block">
-                  <div class="inner-container">
-                    <img src="assets/imgs/indonesia.svg" class="img-responsive" />
-                    <span>matematika</span>
-                  </div>
-                </button>
-              </ion-col>
-              <ion-col>
-                <button ion-button color="yellowise" class="full-block">
-                  <div class="inner-container">
-                    <img src="assets/imgs/united-kingdom.svg" class="img-responsive" />
-                    <span>matematika</span>
-                  </div>
-                </button>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <button ion-button color="light" full>
-                  <ion-icon name="information-circle"></ion-icon>
-                  <span>about</span>
-                </button>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
+        <ion-col>
+          <button ion-button full no-margin color="secondary" (click)="nextPage('RaportPage')">
+            
+          </button>
         </ion-col>
-        <ion-col col-8 class="box-white">
-          <div class="logo-apps"></div>
-          <div class="nilai-content">
-            <ion-grid class="no-padd" text-center>
-              <ion-row>
-                <ion-col>
-                  <div class="panel">
-                    <div class="panel-header blues">
-                      <span>paket a</span>
-                    </div>
-                    <div class="panel-body">
-
-                    </div>
-                    <div class="panel-footer">
-
-                    </div>
-                  </div>
-                </ion-col>
-                <ion-col>
-                  <div class="panel">
-                    <div class="panel-header blues">
-                      <span>paket a</span>
-                    </div>
-                    <div class="panel-body">
-                      <ion-grid class="no-padd">
-                        <ion-row>
-                          <ion-col>
-                            <span>nilai terakhir</span>
-                            <span>100</span>
-                          </ion-col>
-                          <ion-col>
-                            <span>nilai terbaik</span>
-                            <span class="text-nilai">100</span>
-                          </ion-col>
-                        </ion-row>
-                      </ion-grid>
-                    </div>
-                    <div class="panel-footer">
-                      <ion-grid no-padding class="minHeight-100">
-                        <ion-row>
-                          <ion-col>
-                            <button ion-button class="full-button">
-                              <ion-icon name="play"></ion-icon>
-                            </button>
-                          </ion-col>
-                          <ion-col>
-                            <button ion-button class="full-button">
-                              <ion-icon name="information"></ion-icon>
-                            </button>
-                          </ion-col>
-                        </ion-row>
-                      </ion-grid>
-                    </div>
-                  </div>
-                </ion-col>
-                <ion-col>
-                  <div class="panel">
-                    <div class="panel-header blues">
-                      <span>paket a</span>
-                    </div>
-                    <div class="panel-body">
-
-                    </div>
-                    <div class="panel-footer">
-
-                    </div>
-                  </div>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col>
-                  <div class="panel">
-                    <div class="panel-header blues">
-                      <span>paket a</span>
-                    </div>
-                    <div class="panel-body">
-
-                    </div>
-                    <div class="panel-footer">
-
-                    </div>
-                  </div>
-                </ion-col>
-                <ion-col>
-                  <div class="panel">
-                    <div class="panel-header blues">
-                      <span>paket a</span>
-                    </div>
-                    <div class="panel-body">
-
-                    </div>
-                    <div class="panel-footer">
-
-                    </div>
-                  </div>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </div>
+        <ion-col>
+          <button ion-button full no-margin>
+            
+          </button>
         </ion-col>
       </ion-row>
     </ion-grid>
-  </div>
+  </section>
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-logo posAbs to-bottom">
+      <img class="img-responsive" src="assets/imgs/logos.png">
+    </div>
+    <div class="footer-social posAbs to-bottom">
+      <!-- <ion-img width="24" height="24" src="assets/imgs/facebook.svg"></ion-img>
+      <ion-img width="24" height="24" src="assets/imgs/instagram.svg"></ion-img> -->
+    </div>
+  </ion-toolbar>
+</ion-footer>

@@ -6,60 +6,68 @@
 -->
 
 <ion-content padding class="no-scroll">
-  <div class="container" style="text-align: -webkit-center;">
-    <div class="upcontent">
+  <div class="container">
+    <div class="upcontent" style="margin-top: 27px">
       <div id="nilai-div" margin-bottom text-capitalize>
+
+        <div class="top-container">
+          <div class="scoring">
+            <span class="val-score">{{(trueans/(totalar/10))*10}}</span>
+          </div>
+        </div>
+
         <ion-grid>
-          <ion-row text-center>
-            <ion-col col-12>
-              <div class="scoring">
-                <h1 no-margin>Nilai</h1>
-                <div class="ikon">
-                  <span class="f20">
-                    <ion-icon name="trophy"></ion-icon>
-                  </span>
-                  <span class="val-score">{{(trueans/(totalar/10))*10}}</span>
-                </div>
-              </div>
+          <ion-row margin-top>
+            <ion-col col-9>
+              <h5>soal</h5>
+            </ion-col>
+
+            <ion-col col-3>
+              <h5>{{totalar}}</h5>
             </ion-col>
           </ion-row>
-          <ion-row text-center margin-top>
-            <ion-col col-3>
-              <h1>
-                <ion-icon name="list-box"></ion-icon> soal</h1>
-              <h1>{{totalar}}</h1>
+
+          <ion-row margin-top>
+            <ion-col col-9>
+              <h5>benar</h5>
             </ion-col>
+
             <ion-col col-3>
-              <h1>
-                <ion-icon name="checkmark"></ion-icon> benar</h1>
-              <h1>{{trueans}}</h1>
-            </ion-col>
-            <ion-col col-3>
-              <h1>
-                <ion-icon name="checkmark"></ion-icon> kosong</h1>
-              <h1>{{notAnsw}}</h1>
-            </ion-col>
-            <ion-col col-3>
-              <h1>
-                <ion-icon name="close"></ion-icon> salah</h1>
-              <h1>{{totalar-trueans}}</h1>
+              <h5>{{trueans}}</h5>
             </ion-col>
           </ion-row>
+
+          <ion-row margin-top>
+            <ion-col col-9>
+              <h5>kosong</h5>
+            </ion-col>
+
+            <ion-col col-3>
+              <h5>{{notAnsw}}</h5>
+            </ion-col>
+          </ion-row>
+
+          <ion-row margin-top>
+            <ion-col col-9>
+              <h5>salah</h5>
+            </ion-col>
+
+            <ion-col col-3>
+              <h5>{{totalar-trueans}}</h5>
+            </ion-col>
+          </ion-row>
+
         </ion-grid>
       </div>
+
+      <button ion-button color="apps" full no-margin (click)="bahasan()">
+        <span text-capitalize>pembahasan</span>
+      </button>
+
+      <button ion-button color="secondary" full no-margin (click)="toHome()">
+          <span text-capitalize>kembali ke halaman utama</span>
+      </button>
+
     </div>
-
-    <button ion-button color="secondary" class="posAbs to-bottom to-left bigger" (click)="toHome()">
-      <ion-icon name="home"></ion-icon>
-    </button>
-
-    <button ion-button color="dark" class="posAbs to-bottom to-right bigger" (click)="bahasan()">
-      <ion-icon name="bulb" style="padding-right: 5px;"></ion-icon>
-      <span text-capitalize>pembahasan</span>
-    </button>
-
-    <!-- <div class="downcontent" [style.display]="(!divShow)?'none':'block'">
-    
-  </div> -->
   </div>
 </ion-content>

@@ -6,9 +6,14 @@
 -->
 <ion-header>
 
-  <ion-navbar text-capitalize>
-    <ion-title>kunci jawaban</ion-title>
-  </ion-navbar>
+  <ion-toolbar text-capitalize>
+    <ion-title>pembahasan</ion-title>
+    <ion-buttons end>
+      <button ion-button no-margin clear color="light">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 
 </ion-header>
 
@@ -17,64 +22,25 @@
     <ion-row>
       <ion-col col-2 class="s-cut" no-padding>
         <div class="sc-btn">
-          <div class="title-header">
-            <ion-grid>
-              <ion-row>
-                <ion-col col-1>
-                  <div class="square black"></div>
-                </ion-col>
-                <ion-col col-11>
-                  <span>jawaban kamu</span>
-                </ion-col>
-              </ion-row>
-
-              <ion-row>
-                <ion-col col-1>
-                  <div class="square blue"></div>
-                </ion-col>
-                <ion-col col-11>
-                  <span>kunci jawaban</span>
-                </ion-col>
-              </ion-row>
-
-              <ion-row>
-                <ion-col col-1>
-                  <ion-icon name="checkmark"></ion-icon>
-                </ion-col>
-                <ion-col col-11>
-                  <span>jawabanmu benar</span>
-                </ion-col>
-              </ion-row>
-
-              <ion-row>
-                <ion-col col-1>
-                  <ion-icon name="close"></ion-icon>
-                </ion-col>
-                <ion-col col-11>
-                  <span>jawabanmu salah</span>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </div>
           <ion-list no-lines no-margin>
-            <div *ngFor="let items of newArr, let x = index">
-              <button ion-item color="light" (click)="jump(items.bahas, x)">
+            <div *ngFor="let ig of ' '.repeat(fin).split(''), let x = index">
+              <button ion-item color="light">
                 <ion-grid>
                   <ion-row>
                     <ion-col style="color: #660066;">
                       <span>{{x+1}}.</span>
                     </ion-col>
                     <ion-col class="fbold" style="color: #000000;">
-                      <span *ngIf="items.myans === undefined || items.myans === null ">-</span>
-                      <span *ngIf="items.myans !== undefined || items.myans !== null ">{{items.myans}}</span>
+                      <!-- <span *ngIf="items.myans === undefined || items.myans === null ">-</span>
+                      <span *ngIf="items.myans !== undefined || items.myans !== null ">{{items.myans}}</span> -->
                     </ion-col>
                     <ion-col class="fbold" style="color: #0000ff;">
-                      <span>{{items.answ}}</span>
+                      <!-- <span>{{items.answ}}</span> -->
                     </ion-col>
                     <ion-col class="fbold">
-                      <h4 [style.color]="(items.myans === items.answ)?'#00ff00':'#e60042'">
+                      <!-- <h4 [style.color]="(items.myans === items.answ)?'#00ff00':'#e60042'">
                         <ion-icon [name]="(items.myans === items.answ)?'checkmark':'close'"></ion-icon>
-                      </h4>
+                      </h4> -->
                     </ion-col>
                   </ion-row>
                 </ion-grid>
@@ -84,32 +50,35 @@
         </div>
       </ion-col>
       <ion-col class="s-cut" col-5 no-padding>
-        <div class="posAbs to-bottom to-right rectangle">
-          <div class="numpos" text-center *ngIf="pos !== 0">
-            <span>{{pos}}</span>
+        <div class="box">
+          <div class="numpos" text-center>
+            <!-- <span>{{pos}}</span> -->
+            <span>1</span>
           </div>
-          <div class="box red">
-            <span>soal</span>
-          </div>
+          <span>soal</span>
         </div>
         <div class="img-div">
           <div class="z-div">
-            <img [src]="soals" />
+            <!-- <img [src]="soals" /> -->
+            <img src="assets/soal/4/bindo/0001.png" class="img-responsive" />
           </div>
         </div>
       </ion-col>
       <ion-col class="s-cut" col-5 no-padding>
-        <div class="posAbs to-bottom to-right rectangle">
-          <div class="numpos" text-center *ngIf="pos !== 0">
+        <!-- <div class="numpos" text-center *ngIf="pos !== 0">
             <span>{{pos}}</span>
+          </div> -->
+        <div class="box">
+          <div class="numpos" text-center>
+            <!-- <span>{{pos}}</span> -->
+            <span>1</span>
           </div>
-          <div class="box red">
-            <span>pembahasan</span>
-          </div>
+          <span>jawaban</span>
         </div>
         <div class="img-div">
           <div class="z-div">
-            <img [src]="bahass" />
+            <!-- <img [src]="bahass" /> -->
+            <img src="assets/soal/4/bindo/0001.png" class="img-responsive" />
           </div>
         </div>
       </ion-col>

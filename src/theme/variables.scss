@@ -90,11 +90,10 @@ $colors: (
 @import "roboto";
 @import "noto-sans";
 
-$toolbar-background: #f53d3d;
-
 $smp-color: #3498db;
+$smp-color-darker: #3089c5;
 
 //custom value/override
 $button-md-box-shadow: 0px;
 $button-md-border-radius: 0px;
-$background-md-color: $smp-color;
+// $background-md-color: $smp-color;

@@ -1,4 +1,4 @@
-import { AlertController, ToastController, Content, Gesture } from 'ionic-angular';
+import { AlertController, ToastController, Content, Gesture, ModalController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/Rx';
@@ -19,7 +19,9 @@ export class MethodeProvider {
 
   scales: number;
 
-  constructor(public http: HttpClient, private alertCtrl: AlertController, private toast: ToastController) {
+  constructor(public http: HttpClient, private alertCtrl: AlertController, 
+    private toast: ToastController, private modalCtrl: ModalController) {
+
     console.log('Hello MethodeProvider Provider');
     this.posi = new BehaviorSubject(null);
     this.mapel = new BehaviorSubject(null);
@@ -56,6 +58,12 @@ export class MethodeProvider {
     audio.src = "assets/alarm.mp3";
     audio.load();
     audio.play();
+  }
+
+  public openModal(modalName) {
+    var data = { message: 'hello world' };
+    var modalPage = this.modalCtrl.create(modalName, data);
+    modalPage.present();
   }
 
   getGo(val) {

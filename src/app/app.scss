@@ -18,6 +18,25 @@
   }
 }
 
+.side-menu-container {
+  display: relative;
+  height: 50px;
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+.side-menu-content {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+}
+
+.side-menu-text {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 10pt;
+}
+
 .scroll-content {
   overflow-y: auto;
   overflow-x: auto;
@@ -25,6 +44,18 @@
 
 .spacing-15 {
   margin-bottom: 15px;
+}
+
+.padding-left-5 {
+  padding-left: 5px;
+}
+
+.padding-left-10 {
+  padding-left: 10px;
+}
+
+.padding-left-15 {
+  padding-left: 15px;
 }
 
 .warning {
@@ -39,6 +70,31 @@
 .blues {
   background-color: $smp-color;
   color: #ffffff;
+}
+
+.magentas {
+  background-color: #FF00FF;
+  color: #ffffff;
+}
+
+.box-white {
+  background-color: #FFF;
+  color: $smp-color;
+}
+
+.grayed-white {
+  background-color: #dedede;
+  color: #5a5a5a;
+}
+
+.flat-green {
+  background-color: #34a95f;
+  color: #FFF;
+}
+
+.pastel-gray {
+  background-color: #6897bb;
+  color: #FFF;
 }
 
 .container {
@@ -60,14 +116,6 @@ ion-header {
 
 .overlay {
   background: rgba(0, 0, 0, .5);
-}
-
-.radio-md {
-
-  .radio-icon,
-  .radio-inner {
-    border-radius: 0;
-  }
 }
 
 .img-responsive {
@@ -117,4 +165,12 @@ ion-header {
 
 .no-padd {
   padding: 0;
+}
+
+@media only screen and (min-height: 600px) and (min-width: 768px) {
+  .info-modal {
+    .modal-wrapper {
+      height: 285px;
+    }
+  }
 }

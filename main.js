@@ -26,7 +26,7 @@ let knex = require("knex")({
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1024, 
+    width: 1024,
     height: 768
   });
 
@@ -158,19 +158,21 @@ ipcMain.on("onRegister", function (ev, arg) {
   var dir = path.resolve(__dirname, '../db/');
 
   //read and verify kodebuku inside code.file
-  fs.readFile(dir + '/code.file', { encoding: 'utf-8' }, function (err, data) {
+  fs.readFile(dir + '/code.file', {
+    encoding: 'utf-8'
+  }, function (err, data) {
     if (!err) {
       //true condition
       if (data.toString() === arg[0].kode) {
         //check data exist in table
-        knex.select().table('_user').then(function(rows) {
-          if(rows.length > 0) {
+        knex.select().table('_user').then(function (rows) {
+          if (rows.length > 0) {
             //if table have data inside
-            knex('_user').where('id_u','=',1).update({
+            knex('_user').where('id_u', '=', 1).update({
               'fullname': arg[0].fullname,
               'nick': arg[0].nick
             }).then(function (res) {
-              if(res === 1) {
+              if (res === 1) {
                 fs.writeFile(dir + '/reg.file', arg[0].nick + today.getDate() + (today.getMonth() + 1) + today.getFullYear(), function (err) {
                   if (err) {
                     console.log(err);
@@ -248,7 +250,9 @@ ipcMain.on("getNick", function (ev, arg) {
   var dir = path.resolve(__dirname, '../db/');
 
   //read and verify kodebuku inside code.file
-  fs.readFile(dir + '/reg.file', { encoding: 'utf-8' }, function (err, data) {
+  fs.readFile(dir + '/reg.file', {
+    encoding: 'utf-8'
+  }, function (err, data) {
     if (!err) {
       var rege = /[a-zA-Z]+/g;
       mainWindow.webContents.send("nicks", data.match(rege));
@@ -259,4 +263,10 @@ ipcMain.on("getNick", function (ev, arg) {
 //exit apps
 ipcMain.on("exitApp", function (ev, arg) {
   app.quit();
+});
+
+//open facebook with default browser
+ipcMain.on("openFB", function (ev, arg) {
+  var shell = require('electron').shell;
+  shell.openExternal("http://www.facebook.com");
 });

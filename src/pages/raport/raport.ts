@@ -15,7 +15,7 @@ import { IpcprovProvider } from '../../providers/ipcprov/ipcprov';
   templateUrl: 'raport.html',
 })
 export class RaportPage {
-  kls:number;
+  kls: any;
   totalN: number = 0;
   totalMapel: number = 5;
   arrdata: Array<any>;
